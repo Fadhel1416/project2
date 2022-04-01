@@ -10,7 +10,7 @@ final class PostPersister implements DataPersisterInterface{
     protected $em;
 
 
-
+    //ingections des dependances effectuee.......................
     public function __construct(EntityManagerInterface $ems)
     {
 

@@ -113,11 +113,96 @@ hr .new1 {
             <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">Hosteur.com</span> <span><i class="fa fa-copy"></i></span> </div>
             <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">1069 <span class="follow">Followers</span></span> </div>
             <div class=" d-flex mt-2"> <button class="btn1 btn-dark">Edit Profile</button> </div>
-            <div class="text mt-3"> <span>Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork.<br><br> Artist/ Creative Director by Day #NFT minting@ with FND night. </span> </div>
+            <div class="text mt-3"> <span>Fadhel Ali is web developper and web designer with long time experience in fields<br><br> Engineer/ Developper on @Hosteur. </span> </div>
             <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> </div>
             <div class=" px-2 rounded mt-4 date "> <span class="join">Joined JAN,2022</span> </div>
         </div>
     </div>
 </div>
+
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+				<div class="col">
+					<div class="card shadow-sm h-100">
+						<div class="card-body">
+							<h5 class="card-title">Nombre d’hospitalisations</h5>
+							<p class="card-text">Nombre de personnes actuellement hospitalisée</p>
+						</div>
+                        <h3 class="card-footer bg-warning text-dark mx-2 rounded-pill">{{ data.records.0.fields.tot_hosp }}</h3>
+					</div>
+				</div>
+
+                <div class="col">
+					<div class="card shadow-sm">
+						<div class="card-body">
+							<h5 class="card-title">Nombre de Réa</h5>
+							<p class="card-text">Nombre de personnes actuellement en réanimation</p>
+						</div>
+                        <h3 class="card-footer bg-warning text-dark mx-2 rounded-pill">{{  data.records.0.fields.tot_recovered }}</h3>
+					</div>
+				</div>
+
+                <div class="col">
+					<div class="card shadow-sm">
+						<div class="card-body">
+							<h5 class="card-title">Nombre total de décès 😥</h5>
+							<p class="card-text">Nombre de personnes décédés depuis le début de la pandémie</p>
+						</div>
+                        <h3 class="card-footer bg-dark text-light mx-2 rounded-pill">{{ data.records.0.fields.tot_death_hosp }}</h3>
+					</div>
+				</div>
+
+                <div class="col">
+					<div class="card shadow-sm">
+						<div class="card-body">
+							<h5 class="card-title">Nombre totale de guéris</h5>
+							<p class="card-text">Nombre de personnes guéris depuis le début de la pandémie</p>
+						</div>
+                        <h3 class="card-footer bg-success text-dark mx-2 rounded-pill">{{  data.records.0.fields.tot_hosp }}</h3>
+					</div>
+				</div>
+
+                <div class="col">
+					<div class="card shadow-sm">
+						<div class="card-body">
+							<h5 class="card-title">Nombre de cas confirmés</h5>
+							<p class="card-text">Nombre de cas confirmés depuis le début de la pandémie</p>
+						</div>
+                        <h3 class="card-footer bg-info text-dark mx-2 rounded-pill">{{ data.records.0.fields.tot_icu }}</h3>
+					</div>
+				</div>
+
+                <div class="col">
+					<div class="card shadow-sm">
+						<div class="card-body">
+							<h5 class="card-title">Source des données</h5>
+							<p class="card-text">Source des données :<br>{{  data.records.0.datasetid }}</p>
+						</div>
+                        <h3 class="card-footer bg-secondary text-grey mx-2 rounded-pill">{{  data.records.0.datasetid }}</h3>
+					</div>
+				</div>
+                	<div class="album py-5">
+		<div class="container">
+            <h1 class="mb-5">Les chiffres du COVID-19 par département</h1>
+
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+				{% for department in data.facet_groups[0].facets %}
+					<div class="col">
+						<div class="card shadow-lg h-100 m-6">
+							<div class="card-body">
+								<h5 class="card-title">{{ department.name }}</h5>
+								<p class="card-text">Actuellement hospitalisée<span class="badge bg-secondary">{{ department.count }}</span></p>
+								<p class="card-text">Actuellement en réa<span class="badge bg-secondary">{{ department.state}}</span></p>
+								<a href="#" class="btn btn-secondary" role="button" aria-pressed="true">Plus de chiffres</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+			</div>
 </div>
 {% endblock %}
