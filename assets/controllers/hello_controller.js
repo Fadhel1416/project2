@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus';
+import { Controller } from '@hotwired/stimulus';//import the features of controller 
 
 /*
  * This is an example Stimulus controller!
