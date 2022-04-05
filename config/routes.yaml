@@ -1,3 +1,11 @@
 index:
     path: /
     controller: App\Controller\DefaultController::index
+
+
+list_posts:
+    path: /posts
+    controller: App\Controller\PostController::List
+
+
+

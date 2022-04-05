@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,6 +16,17 @@ class PostController extends AbstractController
     {
         return $this->render('post/index.html.twig', [
             'controller_name' => 'PostController',
+        ]);
+    }
+
+
+
+    public function List(PostRepository $postrep): Response 
+    {
+
+$posts=$postrep->findBy(array("user"=>$this->getUser()));
+        return $this->render('post/index.html.twig', [
+            'posts' =>$posts,
         ]);
     }
 }
