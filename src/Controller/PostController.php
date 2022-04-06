@@ -19,14 +19,17 @@ class PostController extends AbstractController
         ]);
     }
 
-
-
+    /**
+     * @Route("/posts/lists", name="list_posts")
+     */
     public function List(PostRepository $postrep): Response 
     {
-
-$posts=$postrep->findBy(array("user"=>$this->getUser()));
+        $posts=$postrep->findBy(array("user"=>$this->getUser()));
         return $this->render('post/index.html.twig', [
             'posts' =>$posts,
         ]);
     }
-}
+
+
+
+    }

@@ -11,6 +11,7 @@ class CallApiService
     public function __construct(HttpClientInterface $client)
     {
         $this->client = $client;
+        
     }
 
     public function getFranceData(): array
