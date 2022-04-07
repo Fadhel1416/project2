@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\UX\Turbo\TurboBundle;
 
 /**
  * @Route("/article")
@@ -34,11 +35,15 @@ class ArticleController extends AbstractController
         $post = new Post();
         $form = $this->createForm(Post1Type::class, $post);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $post->setCreatedAt(new \DateTime('now'));
             $post->setUser(($this->getUser()));
             $postRepository->add($post);
+            if(TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+                // If the request comes from Turbo, set the content type as text/vnd.turbo-stream.html and only send the HTML to update
+                $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+                return $this->render('article/success.stream.html.twig', ['task' => $post]);
+            }
             return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -65,12 +70,10 @@ class ArticleController extends AbstractController
     {
         $form = $this->createForm(Post1Type::class, $post);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $postRepository->add($post);
             return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('article/edit.html.twig', [
             'post' => $post,
             'form' => $form,

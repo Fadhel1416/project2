@@ -136,6 +136,9 @@
     "nikic/php-parser": {
         "version": "v4.13.2"
     },
+    "php-webdriver/webdriver": {
+        "version": "1.12.0"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
@@ -179,6 +182,9 @@
         "version": "v5.4.5"
     },
     "symfony/asset": {
+        "version": "v5.4.3"
+    },
+    "symfony/browser-kit": {
         "version": "v5.4.3"
     },
     "symfony/cache": {
@@ -225,6 +231,9 @@
     },
     "symfony/doctrine-messenger": {
         "version": "v5.4.3"
+    },
+    "symfony/dom-crawler": {
+        "version": "v5.4.6"
     },
     "symfony/dotenv": {
         "version": "v5.4.5"
@@ -361,6 +370,15 @@
     },
     "symfony/options-resolver": {
         "version": "v5.4.3"
+    },
+    "symfony/panther": {
+        "version": "1.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "877d853a05c6713665a2f4b954734592680abff6"
+        }
     },
     "symfony/password-hasher": {
         "version": "v5.4.3"
@@ -508,6 +526,12 @@
     },
     "symfony/uid": {
         "version": "v5.4.3"
+    },
+    "symfony/ux-chartjs": {
+        "version": "v2.1.0"
+    },
+    "symfony/ux-turbo": {
+        "version": "v2.1.0"
     },
     "symfony/validator": {
         "version": "5.4",

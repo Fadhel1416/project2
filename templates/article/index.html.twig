@@ -7,12 +7,26 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Post index</h1>
+<br>
+        <div class="box-body p-15">	
+        <div class="row">
+        <div class="col-md-3">
+         <span class="text-info"><h1>Lists User Posts</h1></span>
+        </div>
+         <div class="col-md-7">
 
-    <table class="table">
+        </div>
+        <div class="col-md-2">
+        <a href="{{ path('app_article_new') }}" class="btn btn-primary pull-right" >Create new</a><br>
+
+        </div>
+
+        </div>
+<br>
+    <div class="table-responsive well">
+    <table class="table table-hover no-wrap dataTable no-footer" id="tab">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>User Email</th>
@@ -24,15 +38,14 @@
         <tbody>
         {% for post in posts %}
             <tr>
-                <td>{{ post.id }}</td>
                 <td>{{ post.title }}</td>
                 <td>{{ post.description }}</td>
                 <td>{{app.user.email}}</td>
 
-                <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td><span class="bg-light">{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</span></td>
                 <td>
-                    <a href="{{ path('app_article_show', {'id': post.id}) }}"><i class="fa fa-eye"></i></a>
-                    <a href="{{ path('app_article_edit', {'id': post.id}) }}"><i class="fas fa-edit"></i></a>
+                    <a href="{{ path('app_article_show', {'id': post.id}) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
+                    <a href="{{ path('app_article_edit', {'id': post.id}) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a>
                 </td>
             </tr>
         {% else %}
@@ -42,6 +55,7 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
+    </div>
 
-    <a href="{{ path('app_article_new') }}">Create new</a>
 {% endblock %}
